@@ -1,0 +1,89 @@
+﻿using AGData.BookMySeat.Domain.Entities;
+using AGData.BookMySeat.Domain.Enums;
+using AGData.BookMySeat.Application.Interfaces;
+using AGData.BookMySeat.Domain.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
+namespace AGData.BookMySeat.Application.Services
+{
+    public class EmployeeService : IEmployeeService
+    {
+        private readonly IEmployeeRepository _employeeRepository;
+
+        public EmployeeService(IEmployeeRepository employeeRepository)
+        {
+            _employeeRepository = employeeRepository ?? throw new ArgumentNullException(nameof(employeeRepository));
+        }
+
+        public async Task<Guid> AddEmployeeAsync(Employee newEmployee, Employee currentUser)
+        {
+            if (!Enum.IsDefined(typeof(Role), newEmployee.EmployeeRole))
+                throw new ArgumentException("Invalid employee role.", nameof(newEmployee.EmployeeRole));
+
+            if (currentUser.EmployeeRole != Role.Admin)
+            {
+                throw new UnauthorizedAccessException("Only an Admin can add employees.");
+            }
+
+            if (newEmployee == null)
+                throw new ArgumentNullException(nameof(newEmployee), "Employee cannot be null.");
+
+            if (string.IsNullOrEmpty(newEmployee.EmployeeName))
+                throw new ArgumentException("Employee name cannot be empty.", nameof(newEmployee.EmployeeName));
+
+            var addedEmployee = await _employeeRepository.AddEmployeeAsync(newEmployee);
+            return addedEmployee.EmployeeId;
+        }
+
+        public async Task<bool> UpdateEmployeeAsync(Guid employeeId, string? updatedEmployeeName = null, Role? updatedEmployeeRole = null)
+        {
+            if (employeeId == Guid.Empty)
+                throw new ArgumentException("Employee ID cannot be empty.", nameof(employeeId));
+
+            var existingEmployee = await _employeeRepository.GetEmployeeByIdAsync(employeeId);
+            if (existingEmployee == null)
+                throw new InvalidOperationException("Employee not found.");
+
+            if (!string.IsNullOrEmpty(updatedEmployeeName))
+            {
+                existingEmployee.EmployeeName = updatedEmployeeName;
+            }
+
+            if (updatedEmployeeRole.HasValue)
+            {
+                existingEmployee.EmployeeRole = updatedEmployeeRole.Value;
+            }
+
+            var result = await _employeeRepository.UpdateEmployeeAsync(employeeId, existingEmployee);
+            return result;
+        }
+
+        public async Task<bool> DeleteEmployeeAsync(Guid employeeId)
+        {
+            if (employeeId == Guid.Empty)
+                throw new ArgumentException("Employee ID cannot be empty.", nameof(employeeId));
+
+            var existingEmployee = await _employeeRepository.GetEmployeeByIdAsync(employeeId);
+            if (existingEmployee == null)
+                throw new InvalidOperationException("Employee not found.");
+
+            var result = await _employeeRepository.DeleteEmployeeAsync(employeeId);
+            return result;
+        }
+
+        public async Task<IEnumerable<Employee>> GetAllEmployeesAsync()
+        {
+            return await _employeeRepository.GetEmployees();
+        }
+
+        public async Task<Employee> GetEmployeeByIdAsync(Guid employeeId)
+        {
+            if (employeeId == Guid.Empty)
+                throw new ArgumentException("Employee ID cannot be empty.", nameof(employeeId));
+
+            return await _employeeRepository.GetEmployeeByIdAsync(employeeId);
+        }
+    }
+}

@@ -1,0 +1,16 @@
+C:\Users\Rahul Jagtap\source\repos\BookMySeat1\BookMySeat.Application\bin\Debug\net8.0\BookMySeat.Application.deps.json
+C:\Users\Rahul Jagtap\source\repos\BookMySeat1\BookMySeat.Application\bin\Debug\net8.0\BookMySeat.Application.dll
+C:\Users\Rahul Jagtap\source\repos\BookMySeat1\BookMySeat.Application\bin\Debug\net8.0\BookMySeat.Application.pdb
+C:\Users\Rahul Jagtap\source\repos\BookMySeat1\BookMySeat.Application\bin\Debug\net8.0\BookMySeat.Domain.dll
+C:\Users\Rahul Jagtap\source\repos\BookMySeat1\BookMySeat.Application\bin\Debug\net8.0\BookMySeat.Domain.pdb
+C:\Users\Rahul Jagtap\source\repos\BookMySeat1\BookMySeat.Application\obj\Debug\net8.0\BookMySeat.Application.csproj.AssemblyReference.cache
+C:\Users\Rahul Jagtap\source\repos\BookMySeat1\BookMySeat.Application\obj\Debug\net8.0\BookMySeat.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Rahul Jagtap\source\repos\BookMySeat1\BookMySeat.Application\obj\Debug\net8.0\BookMySeat.Application.AssemblyInfoInputs.cache
+C:\Users\Rahul Jagtap\source\repos\BookMySeat1\BookMySeat.Application\obj\Debug\net8.0\BookMySeat.Application.AssemblyInfo.cs
+C:\Users\Rahul Jagtap\source\repos\BookMySeat1\BookMySeat.Application\obj\Debug\net8.0\BookMySeat.Application.csproj.CoreCompileInputs.cache
+C:\Users\Rahul Jagtap\source\repos\BookMySeat1\BookMySeat.Application\obj\Debug\net8.0\BookMySeat.Application.sourcelink.json
+C:\Users\Rahul Jagtap\source\repos\BookMySeat1\BookMySeat.Application\obj\Debug\net8.0\BookMySe.90B92AB0.Up2Date
+C:\Users\Rahul Jagtap\source\repos\BookMySeat1\BookMySeat.Application\obj\Debug\net8.0\BookMySeat.Application.dll
+C:\Users\Rahul Jagtap\source\repos\BookMySeat1\BookMySeat.Application\obj\Debug\net8.0\refint\BookMySeat.Application.dll
+C:\Users\Rahul Jagtap\source\repos\BookMySeat1\BookMySeat.Application\obj\Debug\net8.0\BookMySeat.Application.pdb
+C:\Users\Rahul Jagtap\source\repos\BookMySeat1\BookMySeat.Application\obj\Debug\net8.0\ref\BookMySeat.Application.dll

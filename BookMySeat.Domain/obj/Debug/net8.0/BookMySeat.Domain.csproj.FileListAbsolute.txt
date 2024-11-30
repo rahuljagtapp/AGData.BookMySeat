@@ -1,0 +1,12 @@
+C:\Users\Rahul Jagtap\source\repos\BookMySeat1\BookMySeat.Domain\bin\Debug\net8.0\BookMySeat.Domain.deps.json
+C:\Users\Rahul Jagtap\source\repos\BookMySeat1\BookMySeat.Domain\bin\Debug\net8.0\BookMySeat.Domain.dll
+C:\Users\Rahul Jagtap\source\repos\BookMySeat1\BookMySeat.Domain\bin\Debug\net8.0\BookMySeat.Domain.pdb
+C:\Users\Rahul Jagtap\source\repos\BookMySeat1\BookMySeat.Domain\obj\Debug\net8.0\BookMySeat.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Rahul Jagtap\source\repos\BookMySeat1\BookMySeat.Domain\obj\Debug\net8.0\BookMySeat.Domain.AssemblyInfoInputs.cache
+C:\Users\Rahul Jagtap\source\repos\BookMySeat1\BookMySeat.Domain\obj\Debug\net8.0\BookMySeat.Domain.AssemblyInfo.cs
+C:\Users\Rahul Jagtap\source\repos\BookMySeat1\BookMySeat.Domain\obj\Debug\net8.0\BookMySeat.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Rahul Jagtap\source\repos\BookMySeat1\BookMySeat.Domain\obj\Debug\net8.0\BookMySeat.Domain.sourcelink.json
+C:\Users\Rahul Jagtap\source\repos\BookMySeat1\BookMySeat.Domain\obj\Debug\net8.0\BookMySeat.Domain.dll
+C:\Users\Rahul Jagtap\source\repos\BookMySeat1\BookMySeat.Domain\obj\Debug\net8.0\refint\BookMySeat.Domain.dll
+C:\Users\Rahul Jagtap\source\repos\BookMySeat1\BookMySeat.Domain\obj\Debug\net8.0\BookMySeat.Domain.pdb
+C:\Users\Rahul Jagtap\source\repos\BookMySeat1\BookMySeat.Domain\obj\Debug\net8.0\ref\BookMySeat.Domain.dll

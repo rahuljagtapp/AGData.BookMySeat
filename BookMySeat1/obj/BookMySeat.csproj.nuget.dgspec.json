@@ -1,0 +1,81 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\Rahul Jagtap\\source\\repos\\BookMySeat1\\BookMySeat1\\BookMySeat.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Rahul Jagtap\\source\\repos\\BookMySeat1\\BookMySeat1\\BookMySeat.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Rahul Jagtap\\source\\repos\\BookMySeat1\\BookMySeat1\\BookMySeat.csproj",
+        "projectName": "BookMySeat",
+        "projectPath": "C:\\Users\\Rahul Jagtap\\source\\repos\\BookMySeat1\\BookMySeat1\\BookMySeat.csproj",
+        "packagesPath": "C:\\Users\\Rahul Jagtap\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Rahul Jagtap\\source\\repos\\BookMySeat1\\BookMySeat1\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Rahul Jagtap\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\Rahul Jagtap\\source\\repos\\BookMySeat1\\AGData.BookMySeat.Application\\AGData.BookMySeat.Application.csproj": {
+                "projectPath": "C:\\Users\\Rahul Jagtap\\source\\repos\\BookMySeat1\\AGData.BookMySeat.Application\\AGData.BookMySeat.Application.csproj"
+              },
+              "C:\\Users\\Rahul Jagtap\\source\\repos\\BookMySeat1\\AGData.BookMySeat.Domain\\AGData.BookMySeat.Domain.csproj": {
+                "projectPath": "C:\\Users\\Rahul Jagtap\\source\\repos\\BookMySeat1\\AGData.BookMySeat.Domain\\AGData.BookMySeat.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[8.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

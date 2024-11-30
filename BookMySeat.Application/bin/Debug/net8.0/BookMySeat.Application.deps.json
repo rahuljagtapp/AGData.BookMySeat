@@ -1,0 +1,39 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "BookMySeat.Application/1.0.0": {
+        "dependencies": {
+          "BookMySeat.Domain": "1.0.0"
+        },
+        "runtime": {
+          "BookMySeat.Application.dll": {}
+        }
+      },
+      "BookMySeat.Domain/1.0.0": {
+        "runtime": {
+          "BookMySeat.Domain.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "BookMySeat.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "BookMySeat.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

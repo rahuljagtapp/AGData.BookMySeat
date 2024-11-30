@@ -1,0 +1,81 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35312.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AGData.BookMySeat", "BookMySeat1\AGData.BookMySeat.csproj", "{92B3C0A2-E3FB-4905-B161-D077FB11987B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4200FDB0-7AF1-42F7-838C-1426244E34DA} = {4200FDB0-7AF1-42F7-838C-1426244E34DA}
+		{6DD16DC3-9F30-485E-B0B9-5095828863C4} = {6DD16DC3-9F30-485E-B0B9-5095828863C4}
+		{F24A000D-7B07-46AD-A377-CAA26A43AAC5} = {F24A000D-7B07-46AD-A377-CAA26A43AAC5}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AGData.BookMySeat.Application", "BookMySeat.Application\AGData.BookMySeat.Application.csproj", "{82B66CEB-1A20-432F-A968-21FE5EDA49B0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AGData.BookMySeat.Domain", "BookMySeat.Domain\AGData.BookMySeat.Domain.csproj", "{C5537EA8-4B47-417A-8F1C-5205F7CC22FF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AGData.BookMySeat.Presentation", "BookMySeat.Presentation\AGData.BookMySeat.Presentation.csproj", "{4200FDB0-7AF1-42F7-838C-1426244E34DA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AGData.BookMySeat.Infrastructure", "BookMySeat.Infrastructure\AGData.BookMySeat.Infrastructure.csproj", "{6DD16DC3-9F30-485E-B0B9-5095828863C4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AGData.BookMySeat.Tests", "BookMySeat.Tests\AGData.BookMySeat.Tests.csproj", "{F24A000D-7B07-46AD-A377-CAA26A43AAC5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{326C5AC6-B0A7-4302-A19A-C6458E184FF3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{768F8EEA-F343-4121-8266-71E93247CF40}"
+	ProjectSection(SolutionItems) = preProject
+		BookMySeat.Tests\Domain.Tests\Repositories.Tests\BookingServiceTests.cs = BookMySeat.Tests\Domain.Tests\Repositories.Tests\BookingServiceTests.cs
+		BookMySeat.Tests\Domain.Tests\Repositories.Tests\InMemoryBookingRepositoryTests.cs = BookMySeat.Tests\Domain.Tests\Repositories.Tests\InMemoryBookingRepositoryTests.cs
+		BookMySeat.Tests\Domain.Tests\Repositories.Tests\InMemoryVisitorRepositoryTests.cs = BookMySeat.Tests\Domain.Tests\Repositories.Tests\InMemoryVisitorRepositoryTests.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configuration", "Configuration", "{DD098335-1D85-411C-8025-04B98540902A}"
+	ProjectSection(SolutionItems) = preProject
+		appsettings.json = appsettings.json
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{92B3C0A2-E3FB-4905-B161-D077FB11987B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92B3C0A2-E3FB-4905-B161-D077FB11987B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92B3C0A2-E3FB-4905-B161-D077FB11987B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92B3C0A2-E3FB-4905-B161-D077FB11987B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82B66CEB-1A20-432F-A968-21FE5EDA49B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82B66CEB-1A20-432F-A968-21FE5EDA49B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82B66CEB-1A20-432F-A968-21FE5EDA49B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82B66CEB-1A20-432F-A968-21FE5EDA49B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5537EA8-4B47-417A-8F1C-5205F7CC22FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5537EA8-4B47-417A-8F1C-5205F7CC22FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5537EA8-4B47-417A-8F1C-5205F7CC22FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5537EA8-4B47-417A-8F1C-5205F7CC22FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4200FDB0-7AF1-42F7-838C-1426244E34DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4200FDB0-7AF1-42F7-838C-1426244E34DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4200FDB0-7AF1-42F7-838C-1426244E34DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4200FDB0-7AF1-42F7-838C-1426244E34DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DD16DC3-9F30-485E-B0B9-5095828863C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DD16DC3-9F30-485E-B0B9-5095828863C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DD16DC3-9F30-485E-B0B9-5095828863C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DD16DC3-9F30-485E-B0B9-5095828863C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F24A000D-7B07-46AD-A377-CAA26A43AAC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F24A000D-7B07-46AD-A377-CAA26A43AAC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F24A000D-7B07-46AD-A377-CAA26A43AAC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F24A000D-7B07-46AD-A377-CAA26A43AAC5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{82B66CEB-1A20-432F-A968-21FE5EDA49B0} = {326C5AC6-B0A7-4302-A19A-C6458E184FF3}
+		{C5537EA8-4B47-417A-8F1C-5205F7CC22FF} = {326C5AC6-B0A7-4302-A19A-C6458E184FF3}
+		{4200FDB0-7AF1-42F7-838C-1426244E34DA} = {326C5AC6-B0A7-4302-A19A-C6458E184FF3}
+		{6DD16DC3-9F30-485E-B0B9-5095828863C4} = {326C5AC6-B0A7-4302-A19A-C6458E184FF3}
+		{F24A000D-7B07-46AD-A377-CAA26A43AAC5} = {768F8EEA-F343-4121-8266-71E93247CF40}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {043D1333-AB61-4DB5-8DD2-D541D4B8131B}
+	EndGlobalSection
+EndGlobal

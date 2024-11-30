@@ -1,0 +1,6 @@
+C:\Users\Rahul Jagtap\source\repos\BookMySeat1\BookMySeat1\obj\Debug\net8.0\AGData.BookMySeat.csproj.AssemblyReference.cache
+C:\Users\Rahul Jagtap\source\repos\BookMySeat1\BookMySeat1\obj\Debug\net8.0\AGData.BookMySeat.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Rahul Jagtap\source\repos\BookMySeat1\BookMySeat1\obj\Debug\net8.0\AGData.BookMySeat.AssemblyInfoInputs.cache
+C:\Users\Rahul Jagtap\source\repos\BookMySeat1\BookMySeat1\obj\Debug\net8.0\AGData.BookMySeat.AssemblyInfo.cs
+C:\Users\Rahul Jagtap\source\repos\BookMySeat1\BookMySeat1\obj\Debug\net8.0\AGData.BookMySeat.csproj.CoreCompileInputs.cache
+C:\Users\Rahul Jagtap\source\repos\BookMySeat1\BookMySeat1\obj\Debug\net8.0\AGData.BookMySeat.sourcelink.json
