@@ -1,11 +1,13 @@
 ﻿using AGData.BookMySeat.Domain.Entities;
 using AGData.BookMySeat.Application.Interfaces;
 using AGData.BookMySeat.Domain.Interfaces;
-using System.Security.AccessControl;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace AGData.BookMySeat.Application.Services
 {
-    public class ResourceService:IResourceService
+    public class ResourceService : IResourceService
     {
         private readonly IResourceRepository _resourceRepository;
 
@@ -14,28 +16,34 @@ namespace AGData.BookMySeat.Application.Services
             _resourceRepository = resourceRepository ?? throw new ArgumentNullException(nameof(resourceRepository));
         }
 
-        public Guid AddResource(Resource resource)
+        public async Task<Guid> AddResourceAsync(Resource resource)
         {
             if (resource == null)
             {
-                throw new ArgumentNullException("Resource cannot be null.");
+                throw new ArgumentNullException(nameof(resource), "Resource cannot be null.");
             }
+
             if (string.IsNullOrEmpty(resource.ResourceName))
             {
-                throw new ArgumentNullException("Resource name cannot be null");
+                throw new ArgumentException("Resource name cannot be null or empty.", nameof(resource.ResourceName));
             }
 
-            return _resourceRepository.AddResource(resource);
+            if (string.IsNullOrEmpty(resource.ResourceCategorey))
+            {
+                throw new ArgumentException("Resource category cannot be null or empty.", nameof(resource.ResourceCategorey));
+            }
+
+            return await _resourceRepository.AddResourceAsync(resource);
         }
 
-        public string UpdateResource(Guid resourceId, string? updatedResourceName = null, string? updatedResourceCategory = null)
+        public async Task<Guid> UpdateResourceAsync(Guid resourceId, string? updatedResourceName = null, string? updatedResourceCategory = null)
         {
             if (resourceId == Guid.Empty)
             {
                 throw new ArgumentException("Resource ID cannot be empty.", nameof(resourceId));
             }
 
-            var existingResource = _resourceRepository.GetResourceById(resourceId);
+            var existingResource = await _resourceRepository.GetResourceByIdAsync(resourceId);
             if (existingResource == null)
             {
                 throw new InvalidOperationException("Resource not found.");
@@ -51,38 +59,38 @@ namespace AGData.BookMySeat.Application.Services
                 existingResource.ResourceCategorey = updatedResourceCategory;
             }
 
-            return _resourceRepository.UpdateResource(resourceId,updatedResourceName,updatedResourceCategory);
+            return await _resourceRepository.UpdateResourceAsync(resourceId, updatedResourceName, updatedResourceCategory);
         }
 
-        public string DeleteResource(Guid resourceId)
+        public async Task<Guid> DeleteResourceAsync(Guid resourceId)
         {
             if (resourceId == Guid.Empty)
             {
-                throw new ArgumentException("ResourceId cannot be empty.", nameof(resourceId));
+                throw new ArgumentException("Resource ID cannot be empty.", nameof(resourceId));
             }
 
-            var resource = _resourceRepository.GetResourceById(resourceId);
+            var resource = await _resourceRepository.GetResourceByIdAsync(resourceId);
             if (resource == null)
             {
                 throw new InvalidOperationException("Resource not found.");
             }
 
-            return _resourceRepository.DeleteResource(resourceId);
+            return await _resourceRepository.DeleteResourceAsync(resourceId);
         }
 
-        public Resource GetResourceById(Guid resourceId)
+        public async Task<Resource> GetResourceByIdAsync(Guid resourceId)
         {
             if (resourceId == Guid.Empty)
             {
-                throw new ArgumentException("ResourceId cannot be empty.", nameof(resourceId));
+                throw new ArgumentException("Resource ID cannot be empty.", nameof(resourceId));
             }
 
-            return _resourceRepository.GetResourceById(resourceId);
+            return await _resourceRepository.GetResourceByIdAsync(resourceId);
         }
 
-        public IEnumerable<Resource> GetAllResources()
+        public async Task<IEnumerable<Resource>> GetAllResourcesAsync()
         {
-            return _resourceRepository.GetAllResources();
+            return await _resourceRepository.GetAllResourcesAsync();
         }
     }
 }

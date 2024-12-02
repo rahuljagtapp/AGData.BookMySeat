@@ -1,10 +1,6 @@
 ﻿using AGData.BookMySeat.Domain.Entities;
 using AGData.BookMySeat.Domain.Enums;
 using AGData.BookMySeat.Application.Interfaces;
-using AGData.BookMySeat.Domain.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace AGData.BookMySeat.Application.Services
 {
@@ -25,7 +21,7 @@ namespace AGData.BookMySeat.Application.Services
             }
         }
 
-        public Guid AddVisitor(Visitor newVisitor, Employee currentUser)
+        public async Task<Guid> AddVisitorAsync(Visitor newVisitor, Employee currentUser)
         {
             CheckAdminRole(currentUser);
 
@@ -38,21 +34,21 @@ namespace AGData.BookMySeat.Application.Services
             if (string.IsNullOrWhiteSpace(newVisitor.HostEmployee))
                 throw new ArgumentException("Host employee name cannot be empty or null.", nameof(newVisitor.HostEmployee));
 
-            var existingVisitor = _visitorRepository.GetVisitorByIdAsync(newVisitor.VisitorId,currentUser);
+            var existingVisitor = await _visitorRepository.GetVisitorByIdAsync(newVisitor.VisitorId);
             if (existingVisitor != null)
                 throw new InvalidOperationException($"Visitor with ID {newVisitor.VisitorId} already exists.");
 
-            return _visitorRepository.AddVisitor(newVisitor, currentUser);
+            return await _visitorRepository.AddVisitorAsync(newVisitor);
         }
 
-        public string UpdateVisitor(Employee currentUser,Guid visitorId, string? updatedVisitorName = null, string? updatedHostEmployee = null)
+        public async Task<Guid> UpdateVisitorAsync(Employee currentUser, Guid visitorId, string? updatedVisitorName = null, string? updatedHostEmployee = null)
         {
             CheckAdminRole(currentUser);
 
             if (visitorId == Guid.Empty)
                 throw new ArgumentException("Visitor ID cannot be empty.", nameof(visitorId));
 
-            var existingVisitor = _visitorRepository.GetVisitorById(visitorId, currentUser);
+            var existingVisitor = await _visitorRepository.GetVisitorByIdAsync(visitorId);
             if (existingVisitor == null)
                 throw new InvalidOperationException("Visitor not found.");
 
@@ -62,42 +58,42 @@ namespace AGData.BookMySeat.Application.Services
             if (!string.IsNullOrEmpty(updatedHostEmployee))
                 existingVisitor.HostEmployee = updatedHostEmployee;
 
-            return _visitorRepository.UpdateVisitor(currentUser, visitorId, updatedVisitorName, updatedHostEmployee);
+            return await _visitorRepository.UpdateVisitorAsync(visitorId, updatedVisitorName, updatedHostEmployee);
         }
 
-        public string DeleteVisitor(Guid visitorId, Employee currentUser)
+        public async Task<Guid> DeleteVisitorAsync(Guid visitorId, Employee currentUser)
         {
             CheckAdminRole(currentUser);
 
             if (visitorId == Guid.Empty)
                 throw new ArgumentException("Visitor ID cannot be empty.", nameof(visitorId));
 
-            var existingVisitor = _visitorRepository.GetVisitorById(visitorId, currentUser);
+            var existingVisitor = await _visitorRepository.GetVisitorByIdAsync(visitorId);
             if (existingVisitor == null)
                 throw new InvalidOperationException("Visitor not found.");
 
-            return _visitorRepository.DeleteVisitor(visitorId, currentUser);
+            return await _visitorRepository.DeleteVisitorAsync(visitorId);
         }
 
-        public Visitor GetVisitorById(Guid visitorId, Employee currentUser)
+        public async Task<Visitor> GetVisitorByIdAsync(Guid visitorId, Employee currentUser)
         {
             CheckAdminRole(currentUser);
 
             if (visitorId == Guid.Empty)
                 throw new ArgumentException("Visitor ID cannot be empty.", nameof(visitorId));
 
-            var visitor = _visitorRepository.GetVisitorById(visitorId, currentUser);
+            var visitor = await _visitorRepository.GetVisitorByIdAsync(visitorId);
             if (visitor == null)
                 throw new KeyNotFoundException($"Visitor with ID {visitorId} not found.");
 
             return visitor;
         }
 
-        public IEnumerable<Visitor> GetAllVisitors(Employee currentUser)
+        public async Task<IEnumerable<Visitor>> GetAllVisitorsAsync(Employee currentUser)
         {
             CheckAdminRole(currentUser);
 
-            var visitors = _visitorRepository.GetAllVisitorsAsync(currentUser);
+            var visitors = await _visitorRepository.GetAllVisitorsAsync(currentUser);
             if (visitors == null || !visitors.Any())
                 throw new InvalidOperationException("No visitors found.");
 

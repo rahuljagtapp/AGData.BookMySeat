@@ -1,6 +1,16 @@
+C:\Users\Rahul Jagtap\source\repos\BookMySeat1\BookMySeat1\bin\Debug\net8.0\Debug\net8.0\AGData.BookMySeat.Application.deps.json
+C:\Users\Rahul Jagtap\source\repos\BookMySeat1\BookMySeat1\bin\Debug\net8.0\Debug\net8.0\AGData.BookMySeat.Application.runtimeconfig.json
+C:\Users\Rahul Jagtap\source\repos\BookMySeat1\BookMySeat1\bin\Debug\net8.0\Debug\net8.0\AGData.BookMySeat.Application.dll
+C:\Users\Rahul Jagtap\source\repos\BookMySeat1\BookMySeat1\bin\Debug\net8.0\Debug\net8.0\AGData.BookMySeat.Application.pdb
 C:\Users\Rahul Jagtap\source\repos\BookMySeat1\BookMySeat.Application\obj\Debug\net8.0\AGData.BookMySeat.Application.csproj.AssemblyReference.cache
 C:\Users\Rahul Jagtap\source\repos\BookMySeat1\BookMySeat.Application\obj\Debug\net8.0\AGData.BookMySeat.Application.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Rahul Jagtap\source\repos\BookMySeat1\BookMySeat.Application\obj\Debug\net8.0\AGData.BookMySeat.Application.AssemblyInfoInputs.cache
 C:\Users\Rahul Jagtap\source\repos\BookMySeat1\BookMySeat.Application\obj\Debug\net8.0\AGData.BookMySeat.Application.AssemblyInfo.cs
 C:\Users\Rahul Jagtap\source\repos\BookMySeat1\BookMySeat.Application\obj\Debug\net8.0\AGData.BookMySeat.Application.csproj.CoreCompileInputs.cache
 C:\Users\Rahul Jagtap\source\repos\BookMySeat1\BookMySeat.Application\obj\Debug\net8.0\AGData.BookMySeat.Application.sourcelink.json
+C:\Users\Rahul Jagtap\source\repos\BookMySeat1\BookMySeat.Application\obj\Debug\net8.0\AGData.B.C1927D02.Up2Date
+C:\Users\Rahul Jagtap\source\repos\BookMySeat1\BookMySeat.Application\obj\Debug\net8.0\AGData.BookMySeat.Application.dll
+C:\Users\Rahul Jagtap\source\repos\BookMySeat1\BookMySeat.Application\obj\Debug\net8.0\refint\AGData.BookMySeat.Application.dll
+C:\Users\Rahul Jagtap\source\repos\BookMySeat1\BookMySeat.Application\obj\Debug\net8.0\AGData.BookMySeat.Application.pdb
+C:\Users\Rahul Jagtap\source\repos\BookMySeat1\BookMySeat.Application\obj\Debug\net8.0\AGData.BookMySeat.Application.genruntimeconfig.cache
+C:\Users\Rahul Jagtap\source\repos\BookMySeat1\BookMySeat.Application\obj\Debug\net8.0\ref\AGData.BookMySeat.Application.dll

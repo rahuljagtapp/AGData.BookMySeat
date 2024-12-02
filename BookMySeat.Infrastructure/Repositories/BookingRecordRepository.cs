@@ -2,10 +2,6 @@
 using AGData.BookMySeat.Domain.Interfaces;
 using AGData.BookMySeat.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace AGData.BookMySeat.Infrastructure.Repositories
 {
@@ -26,13 +22,17 @@ namespace AGData.BookMySeat.Infrastructure.Repositories
             return bookingRecord.BookingId;
         }
 
-        public async Task<string> UpdateBookingRecordAsync(Guid bookingId, DateTime? updatedStartDateTime = null, DateTime? updatedEndDateTime = null, Guid? updatedResourceId = null)
+        public async Task<Guid> UpdateBookingRecordAsync(
+            Guid bookingId,
+            DateTime? updatedStartDateTime = null,
+            DateTime? updatedEndDateTime = null,
+            Guid? updatedResourceId = null)
         {
             var booking = await _dbContext.BookingRecords
                 .FirstOrDefaultAsync(b => b.BookingId == bookingId);
 
             if (booking == null)
-                return "Booking not found";
+                throw new KeyNotFoundException($"Booking record with ID {bookingId} not found.");
 
             if (updatedStartDateTime.HasValue)
                 booking.StartDateTime = updatedStartDateTime.Value;
@@ -44,20 +44,20 @@ namespace AGData.BookMySeat.Infrastructure.Repositories
                 booking.ResourceId = updatedResourceId.Value;
 
             await _dbContext.SaveChangesAsync();
-            return "Booking updated successfully";
+            return booking.BookingId;
         }
 
-        public async Task<string> DeleteBookingRecordAsync(Guid bookingId)
+        public async Task<Guid> DeleteBookingRecordAsync(Guid bookingId)
         {
             var booking = await _dbContext.BookingRecords
                 .FirstOrDefaultAsync(b => b.BookingId == bookingId);
 
             if (booking == null)
-                return "Booking not found";
+                throw new KeyNotFoundException($"Booking record with ID {bookingId} not found.");
 
             _dbContext.BookingRecords.Remove(booking);
             await _dbContext.SaveChangesAsync();
-            return "Booking deleted successfully";
+            return booking.BookingId;
         }
 
         public async Task<IEnumerable<BookingRecord>> GetAllBookingRecordsAsync()
@@ -77,6 +77,5 @@ namespace AGData.BookMySeat.Infrastructure.Repositories
 
             return bookingRecord;
         }
-
     }
 }

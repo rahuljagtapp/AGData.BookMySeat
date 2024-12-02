@@ -1,22 +1,16 @@
 ﻿using AGData.BookMySeat.Domain.Entities;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
-namespace AGData.BookMySeat.Domain.Interfaces
+namespace AGData.BookMySeat.Application.Interfaces
 {
     public interface IVisitorRepository
     {
-
+        Task<Guid> AddVisitorAsync(Visitor visitor);
+        Task<Guid> UpdateVisitorAsync(Guid visitorId, string? updatedVisitorName = null, string? updatedHostEmployee = null, Guid? updatedHostEmployeeId = null);
+        Task<Guid> DeleteVisitorAsync(Guid visitorId);
         Task<IEnumerable<Visitor>> GetAllVisitorsAsync(Employee currentUser);
         Task<Visitor> GetVisitorByIdAsync(Guid visitorId);
-        Task<Visitor> AddVisitorAsync(Visitor visitor);
-        Task<Visitor> UpdateVisitorAsync(Guid visitorId, Visitor visitor);
-        Task<bool> DeleteVisitorAsync(Guid visitorId);
-
-        //Guid AddVisitor(Visitor newVisitor, Employee currentUser);
-        //string UpdateVisitor(Employee currentUser, Guid visitorId, string? updatedVisitorName = null, string? updatedHostEmployee = null);
-        //string DeleteVisitor(Guid visitorId, Employee currentUser);
-        //Visitor GetVisitorById(Guid visitorId, Employee currentUser);
-        //IEnumerable<Visitor> GetAllVisitors(Employee currentUser);
     }
 }

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AGData.BookMySeat.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+de572d6fda565327b3994a20c1d3afe9bb2c2972")]
 [assembly: System.Reflection.AssemblyProductAttribute("AGData.BookMySeat.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AGData.BookMySeat.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

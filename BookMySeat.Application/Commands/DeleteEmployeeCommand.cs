@@ -1,29 +1,22 @@
-﻿using AGData.BookMySeat.Domain.Interfaces;
-using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AGData.BookMySeat.Application.DTOs;
+using AGData.BookMySeat.Application.Interfaces;
+using AGData.BookMySeat.Domain.Entities;
 
-namespace AGData.BookMySeat.Application.Commands
+public class DeleteEmployeeCommandHandler
 {
-    public record DeleteEmployeeCommand(Guid EmployeeId) : IRequest<bool>;
-    public class DeleteEmployeeCommandHandler(IEmployeeRepository employeeRepository)
-       : IRequestHandler<DeleteEmployeeCommand, bool>
+    private readonly IEmployeeService _employeeService;
+
+    public DeleteEmployeeCommandHandler(IEmployeeService employeeService)
     {
-        public async Task<bool> Handle(DeleteEmployeeCommand request, CancellationToken cancellationToken)
-        {
-            var employee = await employeeRepository.GetEmployeeByIdAsync(request.EmployeeId);
+        _employeeService = employeeService ?? throw new ArgumentNullException(nameof(employeeService));
+    }
 
-            if (employee == null)
-            {
-                throw new KeyNotFoundException($"Employee with ID {request.EmployeeId} not found.");
-            }
+    public async Task<Guid> Handle(DeleteEmployeeCommandDTO dto)
+    {
+      
 
-            var success = await employeeRepository.DeleteEmployeeAsync(request.EmployeeId);
-
-            return success;
-        }
+         // Call the service class to execute business logic
+        var result = await _employeeService.DeleteEmployeeAsync(dto.EmployeeId);
+        return result;
     }
 }

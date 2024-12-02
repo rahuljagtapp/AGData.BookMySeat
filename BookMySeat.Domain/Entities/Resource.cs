@@ -5,9 +5,9 @@
 
         public Guid ResourceId { get; set; } //ResourceId is immutable
 
-        public string ResourceCategorey { get; set; } // ResourceType is immutable
+        public string ResourceCategorey { get; set; } 
 
-        public string ResourceName { get; set; } // ResourceName is immutable
+        public string ResourceName { get; set; } 
 
 
         //public Resource(string resourceType, string resourceName)

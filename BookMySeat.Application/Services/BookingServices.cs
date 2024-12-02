@@ -1,6 +1,10 @@
 ﻿using AGData.BookMySeat.Domain.Entities;
 using AGData.BookMySeat.Application.Interfaces;
 using AGData.BookMySeat.Domain.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace AGData.BookMySeat.Application.Services
 {
@@ -21,7 +25,7 @@ namespace AGData.BookMySeat.Application.Services
             return await _bookingRepository.AddBookingRecordAsync(booking);
         }
 
-        public async Task<string> UpdateBookingAsync(Guid bookingId, DateTime? updatedStartDateTime = null, DateTime? updatedEndDateTime = null, Guid? updatedResourceId = null)
+        public async Task<Guid> UpdateBookingAsync(Guid bookingId, DateTime? updatedStartDateTime = null, DateTime? updatedEndDateTime = null, Guid? updatedResourceId = null)
         {
             if (bookingId == Guid.Empty)
                 throw new ArgumentException("Booking ID cannot be empty.", nameof(bookingId));
@@ -67,7 +71,7 @@ namespace AGData.BookMySeat.Application.Services
             return await _bookingRepository.UpdateBookingRecordAsync(bookingId, updatedStartDateTime, updatedEndDateTime, updatedResourceId);
         }
 
-        public async Task<string> DeleteBookingAsync(Guid bookingId)
+        public async Task<Guid> DeleteBookingAsync(Guid bookingId)
         {
             if (bookingId == Guid.Empty)
                 throw new ArgumentException("Booking ID cannot be empty.", nameof(bookingId));

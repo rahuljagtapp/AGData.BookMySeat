@@ -1,0 +1,5 @@
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Data Source=LAPTOP-01Q4TEG7\\SQLEXPRESS;Initial Catalog=AGDataBookMySeat;Encryption=false;TrustServerCertificate=True;Integrated Security=True"
+  }
+}

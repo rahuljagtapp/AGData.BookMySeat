@@ -2,9 +2,6 @@
 using AGData.BookMySeat.Domain.Enums;
 using AGData.BookMySeat.Application.Interfaces;
 using AGData.BookMySeat.Domain.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace AGData.BookMySeat.Application.Services
 {
@@ -34,10 +31,10 @@ namespace AGData.BookMySeat.Application.Services
                 throw new ArgumentException("Employee name cannot be empty.", nameof(newEmployee.EmployeeName));
 
             var addedEmployee = await _employeeRepository.AddEmployeeAsync(newEmployee);
-            return addedEmployee.EmployeeId;
+            return addedEmployee;
         }
 
-        public async Task<bool> UpdateEmployeeAsync(Guid employeeId, string? updatedEmployeeName = null, Role? updatedEmployeeRole = null)
+        public async Task<Guid> UpdateEmployeeAsync(Guid employeeId, string? updatedEmployeeName = null, Role? updatedEmployeeRole = null)
         {
             if (employeeId == Guid.Empty)
                 throw new ArgumentException("Employee ID cannot be empty.", nameof(employeeId));
@@ -56,11 +53,11 @@ namespace AGData.BookMySeat.Application.Services
                 existingEmployee.EmployeeRole = updatedEmployeeRole.Value;
             }
 
-            var result = await _employeeRepository.UpdateEmployeeAsync(employeeId, existingEmployee);
+            var result = await _employeeRepository.UpdateEmployeeAsync(employeeId, existingEmployee.EmployeeName, existingEmployee.EmployeeRole);
             return result;
         }
 
-        public async Task<bool> DeleteEmployeeAsync(Guid employeeId)
+        public async Task<Guid> DeleteEmployeeAsync(Guid employeeId)
         {
             if (employeeId == Guid.Empty)
                 throw new ArgumentException("Employee ID cannot be empty.", nameof(employeeId));

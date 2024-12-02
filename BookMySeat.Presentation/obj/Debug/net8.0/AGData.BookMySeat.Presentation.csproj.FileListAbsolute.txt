@@ -6,6 +6,7 @@ C:\Users\Rahul Jagtap\source\repos\BookMySeat1\BookMySeat1\bin\Debug\net8.0\Debu
 C:\Users\Rahul Jagtap\source\repos\BookMySeat1\BookMySeat1\bin\Debug\net8.0\Debug\net8.0\AGData.BookMySeat.Presentation.runtimeconfig.json
 C:\Users\Rahul Jagtap\source\repos\BookMySeat1\BookMySeat1\bin\Debug\net8.0\Debug\net8.0\AGData.BookMySeat.Presentation.dll
 C:\Users\Rahul Jagtap\source\repos\BookMySeat1\BookMySeat1\bin\Debug\net8.0\Debug\net8.0\AGData.BookMySeat.Presentation.pdb
+C:\Users\Rahul Jagtap\source\repos\BookMySeat1\BookMySeat.Presentation\obj\Debug\net8.0\AGData.BookMySeat.Presentation.csproj.AssemblyReference.cache
 C:\Users\Rahul Jagtap\source\repos\BookMySeat1\BookMySeat.Presentation\obj\Debug\net8.0\AGData.BookMySeat.Presentation.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Rahul Jagtap\source\repos\BookMySeat1\BookMySeat.Presentation\obj\Debug\net8.0\AGData.BookMySeat.Presentation.AssemblyInfoInputs.cache
 C:\Users\Rahul Jagtap\source\repos\BookMySeat1\BookMySeat.Presentation\obj\Debug\net8.0\AGData.BookMySeat.Presentation.AssemblyInfo.cs

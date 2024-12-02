@@ -31,8 +31,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{768F8EEA-F
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configuration", "Configuration", "{DD098335-1D85-411C-8025-04B98540902A}"
 	ProjectSection(SolutionItems) = preProject
-		appsettings.json = appsettings.json
+		appsetting.json = appsetting.json
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{716B793E-E44E-4E14-8645-EA7D5772A86B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

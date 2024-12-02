@@ -26,7 +26,7 @@ namespace AGData.BookMySeat.Infrastructure.Repositories
         public async Task<Resource> GetResourceByIdAsync(Guid resourceId)
         {
             var resource = await _dbContext.Resources
-          .FirstOrDefaultAsync(r => r.ResourceId == resourceId);
+                .FirstOrDefaultAsync(r => r.ResourceId == resourceId);
 
             if (resource == null)
             {
@@ -36,33 +36,42 @@ namespace AGData.BookMySeat.Infrastructure.Repositories
             return resource;
         }
 
-        public async Task<Resource> AddResourceAsync(Resource resource)
+        public async Task<Guid> AddResourceAsync(Resource resource)
         {
-            resource.ResourceId = Guid.NewGuid();  // Generate a new ID for the resource
+            resource.ResourceId = Guid.NewGuid();
             await _dbContext.Resources.AddAsync(resource);
             await _dbContext.SaveChangesAsync();
 
-            return resource;
+            return resource.ResourceId;
         }
 
-        public async Task<Resource> UpdateResourceAsync(Guid resourceId, Resource resource)
+        public async Task<Guid> UpdateResourceAsync(Guid resourceId, string? updatedResourceCategory = null, string? updatedResourceName = null)
         {
+            if (resourceId == Guid.Empty)
+                throw new ArgumentException("Resource ID cannot be empty.", nameof(resourceId));
+
             var existingResource = await _dbContext.Resources
                 .FirstOrDefaultAsync(r => r.ResourceId == resourceId);
 
-            if (existingResource != null)
-            {
-                existingResource.ResourceCategorey = resource.ResourceCategorey;
-                existingResource.ResourceName = resource.ResourceName;
+            if (existingResource == null)
+                throw new InvalidOperationException("Resource not found.");
 
-                await _dbContext.SaveChangesAsync();
-                return existingResource;
+            if (!string.IsNullOrEmpty(updatedResourceCategory))
+            {
+                existingResource.ResourceCategorey = updatedResourceCategory;
             }
 
-            return null;
+            if (!string.IsNullOrEmpty(updatedResourceName))
+            {
+                existingResource.ResourceName = updatedResourceName;
+            }
+
+            await _dbContext.SaveChangesAsync();
+
+            return existingResource.ResourceId;
         }
 
-        public async Task<bool> DeleteResourceAsync(Guid resourceId)
+        public async Task<Guid> DeleteResourceAsync(Guid resourceId)
         {
             var resource = await _dbContext.Resources
                 .FirstOrDefaultAsync(r => r.ResourceId == resourceId);
@@ -71,10 +80,10 @@ namespace AGData.BookMySeat.Infrastructure.Repositories
             {
                 _dbContext.Resources.Remove(resource);
                 await _dbContext.SaveChangesAsync();
-                return true;
+                return resource.ResourceId;
             }
 
-            return false;
+            return Guid.Empty;
         }
     }
 }

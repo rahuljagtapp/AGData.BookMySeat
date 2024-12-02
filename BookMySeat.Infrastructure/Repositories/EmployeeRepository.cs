@@ -1,8 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
-
-using AGData.BookMySeat.Infrastructure.Data;
+﻿using AGData.BookMySeat.Infrastructure.Data;
 using AGData.BookMySeat.Domain.Entities;
 using AGData.BookMySeat.Domain.Interfaces;
+using Microsoft.EntityFrameworkCore;
+using AGData.BookMySeat.Domain.Enums;
 
 namespace AGData.BookMySeat.Infrastructure.Repositories
 {
@@ -22,48 +22,64 @@ namespace AGData.BookMySeat.Infrastructure.Repositories
 
         public async Task<Employee> GetEmployeeByIdAsync(Guid id)
         {
-            return await dbContext.Employees.FirstOrDefaultAsync(x => x.EmployeeId == id);
+            if (id == Guid.Empty)
+            {
+                // You can either throw an exception or return null, depending on your needs
+                throw new ArgumentException("Invalid GUID provided", nameof(id));
+            }
+
+            return await dbContext.Employees
+                                  .FirstOrDefaultAsync(x => x.EmployeeId == id);
         }
 
-        public async Task<Employee> AddEmployeeAsync(Employee entity)
+        public async Task<Guid> AddEmployeeAsync(Employee entity)
         {
+            // Create a new GUID for the employee if it's not provided
             entity.EmployeeId = Guid.NewGuid();
             dbContext.Employees.Add(entity);
 
             await dbContext.SaveChangesAsync();
 
-            return entity;
+            return entity.EmployeeId;  // Return the GUID of the newly added employee
         }
 
-        public async Task<Employee> UpdateEmployeeAsync(Guid employeeId, Employee entity)
+        public async Task<Guid> UpdateEmployeeAsync(Guid employeeId, string? employeeName = null, Role? employeeRole = null)
         {
-            var employee = await dbContext.Employees.FirstOrDefaultAsync(x => x.Id == employeeId);
+            // Find the employee by their Id
+            var employee = await dbContext.Employees.FirstOrDefaultAsync(x => x.EmployeeId == employeeId);
 
             if (employee is not null)
             {
-                employee.Name = entity.EmployeeName;
-              
+                // Update properties only if they're not null
+                if (employeeName != null)
+                    employee.EmployeeName = employeeName;
+
+                if (employeeRole.HasValue)
+                    employee.EmployeeRole = employeeRole.Value;
 
                 await dbContext.SaveChangesAsync();
 
-                return employee;
+                return employee.EmployeeId;  // Return the GUID of the updated employee
             }
 
-            return entity;
+            // If the employee doesn't exist, return the default Guid (possibly signaling failure)
+            return Guid.Empty;
         }
 
-        public async Task<bool> DeleteEmployeeAsync(Guid employeeId)
+        public async Task<Guid> DeleteEmployeeAsync(Guid employeeId)
         {
             var employee = await dbContext.Employees.FirstOrDefaultAsync(x => x.EmployeeId == employeeId);
 
             if (employee is not null)
             {
                 dbContext.Employees.Remove(employee);
+                await dbContext.SaveChangesAsync();
 
-                return await dbContext.SaveChangesAsync() > 0;
+                return employee.EmployeeId;  // Return the GUID of the deleted employee
             }
 
-            return false;
+            // If the employee doesn't exist, return the default Guid (possibly signaling failure)
+            return Guid.Empty;
         }
     }
 }
