@@ -5,7 +5,7 @@ namespace AGData.BookMySeat.Application.Interfaces
 {
     public interface IEmployeeService
     {
-        Task<Guid> AddEmployeeAsync(Employee newEmployee, Employee currentUser);
+        Task<Guid> AddEmployeeAsync(Employee newEmployee);
 
         Task<Guid> UpdateEmployeeAsync(Guid employeeId, string? updatedEmployeeName = null, Role? updatedEmployeeRole = null);
 

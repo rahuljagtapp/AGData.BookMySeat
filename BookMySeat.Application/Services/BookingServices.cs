@@ -1,10 +1,6 @@
 ﻿using AGData.BookMySeat.Domain.Entities;
 using AGData.BookMySeat.Application.Interfaces;
 using AGData.BookMySeat.Domain.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace AGData.BookMySeat.Application.Services
 {

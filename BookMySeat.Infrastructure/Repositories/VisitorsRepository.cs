@@ -1,102 +1,80 @@
 ﻿using AGData.BookMySeat.Domain.Entities;
 using AGData.BookMySeat.Application.Interfaces;
+using AGData.BookMySeat.Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace AGData.BookMySeat.Application.Services
 {
     public class VisitorRepository : IVisitorRepository
     {
-        private readonly IVisitorRepository _visitorRepository;
+        private readonly SeatBookingDbcontext _dbContext;
 
-        public VisitorRepository(IVisitorRepository visitorRepository)
+        public VisitorRepository(SeatBookingDbcontext dbContext)
         {
-            _visitorRepository = visitorRepository ?? throw new ArgumentNullException(nameof(visitorRepository));
+            _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
         }
 
         public async Task<Guid> AddVisitorAsync(Visitor visitor)
         {
             if (visitor == null)
-            {
-                throw new ArgumentNullException("Visitor cannot be null.");
-            }
+                throw new ArgumentNullException(nameof(visitor), "Visitor cannot be null.");
 
-            if (string.IsNullOrEmpty(visitor.VisitorName))
-            {
-                throw new ArgumentNullException("Visitor name cannot be null or empty.");
-            }
-
-            if (string.IsNullOrEmpty(visitor.HostEmployee))
-            {
-                throw new ArgumentNullException("Host employee cannot be null or empty.");
-            }
-
-            if (visitor.HostEmployeeId == Guid.Empty)
-            {
-                throw new ArgumentException("Host employee ID cannot be empty.", nameof(visitor.HostEmployeeId));
-            }
-
-            return await _visitorRepository.AddVisitorAsync(visitor);
+            await _dbContext.Visitors.AddAsync(visitor);
+            await _dbContext.SaveChangesAsync();
+            return visitor.VisitorId;
         }
 
         public async Task<Guid> UpdateVisitorAsync(Guid visitorId, string? updatedVisitorName = null, string? updatedHostEmployee = null, Guid? updatedHostEmployeeId = null)
         {
             if (visitorId == Guid.Empty)
-            {
                 throw new ArgumentException("Visitor ID cannot be empty.", nameof(visitorId));
-            }
 
-            var existingVisitor = await _visitorRepository.GetVisitorByIdAsync(visitorId);
+            var existingVisitor = await _dbContext.Visitors.FindAsync(visitorId);
             if (existingVisitor == null)
-            {
                 throw new InvalidOperationException("Visitor not found.");
-            }
 
             if (!string.IsNullOrEmpty(updatedVisitorName))
-            {
                 existingVisitor.VisitorName = updatedVisitorName;
-            }
 
             if (!string.IsNullOrEmpty(updatedHostEmployee))
-            {
                 existingVisitor.HostEmployee = updatedHostEmployee;
-            }
 
             if (updatedHostEmployeeId.HasValue)
-            {
                 existingVisitor.HostEmployeeId = updatedHostEmployeeId.Value;
-            }
 
-            return await _visitorRepository.UpdateVisitorAsync(visitorId, updatedVisitorName, updatedHostEmployee, updatedHostEmployeeId);
+            await _dbContext.SaveChangesAsync();
+            return existingVisitor.VisitorId;
         }
 
         public async Task<Guid> DeleteVisitorAsync(Guid visitorId)
         {
             if (visitorId == Guid.Empty)
-            {
                 throw new ArgumentException("Visitor ID cannot be empty.", nameof(visitorId));
-            }
 
-            var existingVisitor = await _visitorRepository.GetVisitorByIdAsync(visitorId);
+            var existingVisitor = await _dbContext.Visitors.FindAsync(visitorId);
             if (existingVisitor == null)
-            {
                 throw new InvalidOperationException("Visitor not found.");
-            }
 
-            return await _visitorRepository.DeleteVisitorAsync(visitorId);
+            _dbContext.Visitors.Remove(existingVisitor);
+            await _dbContext.SaveChangesAsync();
+            return existingVisitor.VisitorId;
         }
 
         public async Task<IEnumerable<Visitor>> GetAllVisitorsAsync(Employee currentUser)
         {
-            return await _visitorRepository.GetAllVisitorsAsync(currentUser);
+            return await _dbContext.Visitors.Where(v => v.HostEmployeeId == currentUser.EmployeeId).ToListAsync();
         }
 
         public async Task<Visitor> GetVisitorByIdAsync(Guid visitorId)
         {
             if (visitorId == Guid.Empty)
-            {
                 throw new ArgumentException("Visitor ID cannot be empty.", nameof(visitorId));
-            }
 
-            return await _visitorRepository.GetVisitorByIdAsync(visitorId);
+            var visitor = await _dbContext.Visitors.FindAsync(visitorId);
+            if (visitor == null)
+                throw new KeyNotFoundException("Visitor not found.");
+
+            return visitor;
         }
     }
 }

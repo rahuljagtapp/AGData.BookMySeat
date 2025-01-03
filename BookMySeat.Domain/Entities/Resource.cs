@@ -1,24 +1,36 @@
-﻿namespace AGData.BookMySeat.Domain.Entities
+﻿using System;
+
+namespace AGData.BookMySeat.Domain.Entities
 {
     public class Resource
     {
+        public Guid ResourceId { get; private set; }
+        public string ResourceCategory { get; private set; }
+        public string ResourceName { get; private set; }
 
-        public Guid ResourceId { get; set; } //ResourceId is immutable
+        private Resource() { }
 
-        public string ResourceCategorey { get; set; } 
+        public Resource(string resourceCategory, string resourceName)
+        {
+            ResourceId = Guid.NewGuid();
+            ResourceCategory = resourceCategory;
+            ResourceName = resourceName;
+        }
 
-        public string ResourceName { get; set; } 
+        public void UpdateResourceName(string newName)
+        {
+            if (!string.IsNullOrWhiteSpace(newName))
+            {
+                ResourceName = newName;
+            }
+        }
 
-
-        //public Resource(string resourceType, string resourceName)
-        //{
-        //    ResourceId = Guid.NewGuid();
-        //    ResourceCategorey = resourceType;
-        //    ResourceName = resourceName;
-
-        //}
-        public Resource() {}
-        
-
+        public void UpdateResourceCategory(string newCategory)
+        {
+            if (!string.IsNullOrWhiteSpace(newCategory))
+            {
+                ResourceCategory = newCategory;
+            }
+        }
     }
 }

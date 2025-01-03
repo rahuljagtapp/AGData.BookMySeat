@@ -1,8 +1,11 @@
-﻿using AGData.BookMySeat.Infrastructure.Data;
+﻿using AGData.BookMySeat.Application.Interfaces;
+using AGData.BookMySeat.Application.Services;
+using AGData.BookMySeat.Domain.Interfaces;
+using AGData.BookMySeat.Infrastructure.Data;
+using AGData.BookMySeat.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 
 namespace AGData.BookMySeat.Infrastructure
 {
@@ -12,8 +15,21 @@ namespace AGData.BookMySeat.Infrastructure
         {
             services.AddDbContext<SeatBookingDbcontext>(options =>
             {
-                options.UseSqlServer(@"Server=LAPTOP-01Q4TEG7\SQLEXPRESS;Database=master;Trusted_Connection=True;MultipleActiveResultSets=true;");
+               
+                options.UseSqlServer("Server=LAPTOP-01Q4TEG7\\SQLEXPRESS;Database=AgDataBMSDb;Trusted_Connection=True;TrustServerCertificate=True");
+
             });
+            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+            services.AddScoped<IBookingRepository, BookingRecordRepository>();
+            services.AddScoped<IResourceRepository, ResourceRepository>();
+            services.AddScoped<IVisitorRepository, VisitorRepository>();
+
+            //var connectionString = configuration.GetConnectionString("AGDataBMSConnectionString");
+
+            //services.AddDbContext<SeatBookingDbcontext>(options =>
+            //{
+            //    options.UseSqlServer(connectionString);
+            //});
 
             return services;
         }

@@ -1,9 +1,10 @@
 ﻿using AGData.BookMySeat.Domain.Entities;
+using AGData.BookMySeat.Infrastructure.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace AGData.BookMySeat.Infrastructure.Data
 {
-    public class SeatBookingDbcontext:DbContext
+    public class SeatBookingDbcontext:DbContext, ISeatBookingDbContext
     {
         public SeatBookingDbcontext(DbContextOptions<SeatBookingDbcontext> options): base(options) 
         {
@@ -54,6 +55,8 @@ namespace AGData.BookMySeat.Infrastructure.Data
                 
             });
         }
+
+       
 
     }
 }

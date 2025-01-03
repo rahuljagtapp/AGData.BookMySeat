@@ -24,14 +24,10 @@ public class CreateEmployeeCommandHandler
             EmployeeName = dto.EmployeeName,
             EmployeeRole =employeeRole
         };
-        var currentUser = new Employee
-        {
-            EmployeeName = "Abhishek Goyal",
-            EmployeeRole = 0
-        };
+        
 
         // Call the service class to execute business logic
-        var result = await _employeeService.AddEmployeeAsync(newEmployee,currentUser);
+        var result = await _employeeService.AddEmployeeAsync(newEmployee);
         return result;
     }
 }

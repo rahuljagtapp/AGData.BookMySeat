@@ -14,15 +14,12 @@ namespace AGData.BookMySeat.Application.Services
             _employeeRepository = employeeRepository ?? throw new ArgumentNullException(nameof(employeeRepository));
         }
 
-        public async Task<Guid> AddEmployeeAsync(Employee newEmployee, Employee currentUser)
+        public async Task<Guid> AddEmployeeAsync(Employee newEmployee)
         {
             if (!Enum.IsDefined(typeof(Role), newEmployee.EmployeeRole))
                 throw new ArgumentException("Invalid employee role.", nameof(newEmployee.EmployeeRole));
 
-            if (currentUser.EmployeeRole != Role.Admin)
-            {
-                throw new UnauthorizedAccessException("Only an Admin can add employees.");
-            }
+           
 
             if (newEmployee == null)
                 throw new ArgumentNullException(nameof(newEmployee), "Employee cannot be null.");

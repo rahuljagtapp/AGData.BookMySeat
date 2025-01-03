@@ -1,0 +1,379 @@
+[
+  {
+    "ContainingType": "AGData.BookMySeat.WebAPI.Controllers.BookingRecordController",
+    "Method": "AddBookingAsync",
+    "RelativePath": "api/BookingRecord",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newBookingDto",
+        "Type": "AGData.BookMySeat.WebAPI.DTOs.AddBookingRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AGData.BookMySeat.WebAPI.Controllers.BookingRecordController",
+    "Method": "GetBookingByIdAsync",
+    "RelativePath": "api/BookingRecord/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AGData.BookMySeat.WebAPI.Controllers.BookingRecordController",
+    "Method": "UpdateBookingAsync",
+    "RelativePath": "api/BookingRecord/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "updatedBookingDto",
+        "Type": "AGData.BookMySeat.WebAPI.DTOs.UpdateBookingRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AGData.BookMySeat.WebAPI.Controllers.BookingRecordController",
+    "Method": "DeleteBookingAsync",
+    "RelativePath": "api/BookingRecord/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AGData.BookMySeat.WebAPI.Controllers.BookingRecordController",
+    "Method": "GetAllBookingsAsync",
+    "RelativePath": "api/BookingRecord/all",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EmployeeController",
+    "Method": "AddEmployeeAsync",
+    "RelativePath": "api/Employee",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newEmployeeDto",
+        "Type": "AGData.BookMySeat.WebAPI.DTOs.AddEmployeeRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EmployeeController",
+    "Method": "GetEmployeeByIDAsync",
+    "RelativePath": "api/Employee/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EmployeeController",
+    "Method": "UpdateEmployeeAsync",
+    "RelativePath": "api/Employee/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "updatedEmployeeDto",
+        "Type": "AGData.BookMySeat.WebAPI.DTOs.UpdateEmployeeRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EmployeeController",
+    "Method": "DeleteEmployeeAsync",
+    "RelativePath": "api/Employee/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EmployeeController",
+    "Method": "GetAllEmployeeAsync",
+    "RelativePath": "api/Employee/all",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AGData.BookMySeat.WebAPI.Controllers.ResourceController",
+    "Method": "AddResourceAsync",
+    "RelativePath": "api/Resource",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "resourceDto",
+        "Type": "AGData.BookMySeat.WebAPI.DTOs.AddResourceRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AGData.BookMySeat.WebAPI.Controllers.ResourceController",
+    "Method": "UpdateResourceAsync",
+    "RelativePath": "api/Resource",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.Guid",
+        "IsRequired": false
+      },
+      {
+        "Name": "updatedResourceDto",
+        "Type": "AGData.BookMySeat.WebAPI.DTOs.UpdateResourceRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AGData.BookMySeat.WebAPI.Controllers.ResourceController",
+    "Method": "DeleteResourceAsync",
+    "RelativePath": "api/Resource/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AGData.BookMySeat.WebAPI.Controllers.ResourceController",
+    "Method": "GetAllResourcesAsync",
+    "RelativePath": "api/Resource/all",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AGData.BookMySeat.WebAPI.Controllers.ResourceController",
+    "Method": "GetResourceByIdAsync",
+    "RelativePath": "api/Resource/id:Guid",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AGData.BookMySeat.WebAPI.Controllers.VisitorController",
+    "Method": "AddVisitorAsync",
+    "RelativePath": "api/Visitor",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newVisitorDto",
+        "Type": "AGData.BookMySeat.WebAPI.DTOs.AddVisitorRequestDto",
+        "IsRequired": true
+      },
+      {
+        "Name": "EmployeeId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      },
+      {
+        "Name": "EmployeeName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "EmployeeRole",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AGData.BookMySeat.WebAPI.Controllers.VisitorController",
+    "Method": "GetVisitorByIdAsync",
+    "RelativePath": "api/Visitor/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AGData.BookMySeat.WebAPI.Controllers.VisitorController",
+    "Method": "UpdateVisitorAsync",
+    "RelativePath": "api/Visitor/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "updatedVisitorDto",
+        "Type": "AGData.BookMySeat.WebAPI.DTOs.UpdateVisitorRequestDto",
+        "IsRequired": true
+      },
+      {
+        "Name": "EmployeeId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      },
+      {
+        "Name": "EmployeeName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "EmployeeRole",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AGData.BookMySeat.WebAPI.Controllers.VisitorController",
+    "Method": "DeleteVisitorAsync",
+    "RelativePath": "api/Visitor/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "EmployeeId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      },
+      {
+        "Name": "EmployeeName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "EmployeeRole",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AGData.BookMySeat.WebAPI.Controllers.VisitorController",
+    "Method": "GetAllVisitorsAsync",
+    "RelativePath": "api/Visitor/all",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "EmployeeId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      },
+      {
+        "Name": "EmployeeName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "EmployeeRole",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

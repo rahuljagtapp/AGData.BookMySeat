@@ -23,10 +23,12 @@
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.0" />
     <PackageReference Include="System.Diagnostics.Tools" Version="4.3.0" />
+    <PackageReference Include="System.Text.RegularExpressions" Version="4.3.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\BookMySeat.Domain\AGData.BookMySeat.Domain.csproj" />
+    <ProjectReference Include="..\BookMySeat.Infrastructure\AGData.BookMySeat.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
