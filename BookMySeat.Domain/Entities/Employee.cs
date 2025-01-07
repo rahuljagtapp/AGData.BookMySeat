@@ -14,6 +14,11 @@ namespace AGData.BookMySeat.Domain.Entities
         public Employee()
         {
         }
+        public Employee(string employeeName, Role employeeRole)
+        {
+            EmployeeName = employeeName;
+            EmployeeRole = employeeRole;
+        }
         public void UpdateEmployeeName(string newName)
         {
             if (!string.IsNullOrWhiteSpace(newName))

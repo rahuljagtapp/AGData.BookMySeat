@@ -2,16 +2,16 @@
 {
     public class Visitor
     {
-        public Guid VisitorId { get; private set; }
+        public Guid VisitorId { get;  private set; }
         public string VisitorName { get; private set; }
         public string HostEmployee { get; private set; }
         public Guid HostEmployeeId { get; private set; }
 
-        private Visitor() { }
+        public Visitor() { }
 
         public Visitor(string visitorName, string hostEmployee, Guid hostEmployeeId)
         {
-            VisitorId = Guid.NewGuid();
+           
             VisitorName = visitorName;
             HostEmployee = hostEmployee;
             HostEmployeeId = hostEmployeeId;
@@ -30,6 +30,14 @@
             if (!string.IsNullOrWhiteSpace(newHostEmployee))
             {
                 HostEmployee = newHostEmployee;
+                HostEmployeeId = newHostEmployeeId;
+            }
+        }
+
+        public void UpdateHostEmployeeId(Guid newHostEmployeeId)
+        {
+            if (newHostEmployeeId != Guid.Empty)
+            {
                 HostEmployeeId = newHostEmployeeId;
             }
         }

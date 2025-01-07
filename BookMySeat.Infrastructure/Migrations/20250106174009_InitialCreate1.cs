@@ -5,7 +5,7 @@
 namespace AGData.BookMySeat.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class updatedconnectionstring : Migration
+    public partial class InitialCreate1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

@@ -42,12 +42,12 @@ namespace AGData.BookMySeat.Application.Services
 
             if (!string.IsNullOrEmpty(updatedEmployeeName))
             {
-                existingEmployee.EmployeeName = updatedEmployeeName;
+                existingEmployee.UpdateEmployeeName(updatedEmployeeName);
             }
 
             if (updatedEmployeeRole.HasValue)
             {
-                existingEmployee.EmployeeRole = updatedEmployeeRole.Value;
+                existingEmployee.UpdateEmployeeRole(updatedEmployeeRole.Value);
             }
 
             var result = await _employeeRepository.UpdateEmployeeAsync(employeeId, existingEmployee.EmployeeName, existingEmployee.EmployeeRole);

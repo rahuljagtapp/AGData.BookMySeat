@@ -8,7 +8,7 @@ namespace AGData.BookMySeat.Infrastructure.Interfaces
     {
         DbSet<Employee> Employees { get; set; }
         DbSet<Visitor> Visitors { get; set; }
-        DbSet<Resource> Resources { get; set; }
+        DbSet<Seat> Seats { get; set; }
         DbSet<BookingRecord> BookingRecords { get; set; }
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);

@@ -11,9 +11,9 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AGData.BookMySeat.Infrastructure.Migrations
 {
-    [DbContext(typeof(SeatBookingDbcontext))]
-    [Migration("20241201151803_DbInit2")]
-    partial class DbInit2
+    [DbContext(typeof(SeatBookingDbContext))]
+    [Migration("20250107095334_updted-seat")]
+    partial class updtedseat
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -29,7 +29,8 @@ namespace AGData.BookMySeat.Infrastructure.Migrations
                 {
                     b.Property<Guid>("BookingId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasDefaultValueSql("NEWID()");
 
                     b.Property<DateTime>("BookingDate")
                         .HasColumnType("datetime2");
@@ -40,13 +41,17 @@ namespace AGData.BookMySeat.Infrastructure.Migrations
                     b.Property<DateTime>("EndDateTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("ResourceId")
+                    b.Property<Guid>("SeatId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("StartDateTime")
                         .HasColumnType("datetime2");
 
                     b.HasKey("BookingId");
+
+                    b.HasIndex("EmployeeId");
+
+                    b.HasIndex("SeatId");
 
                     b.ToTable("BookingRecords");
                 });
@@ -55,48 +60,51 @@ namespace AGData.BookMySeat.Infrastructure.Migrations
                 {
                     b.Property<Guid>("EmployeeId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasDefaultValueSql("NEWID()");
 
                     b.Property<string>("EmployeeName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
-                    b.Property<int>("EmployeeRole")
-                        .HasColumnType("int");
+                    b.Property<string>("EmployeeRole")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("EmployeeId");
 
                     b.ToTable("Employees");
                 });
 
-            modelBuilder.Entity("AGData.BookMySeat.Domain.Entities.Resource", b =>
+            modelBuilder.Entity("AGData.BookMySeat.Domain.Entities.Seat", b =>
                 {
-                    b.Property<Guid>("ResourceId")
+                    b.Property<Guid>("SeatId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasDefaultValueSql("NEWID()");
 
-                    b.Property<string>("ResourceCategorey")
+                    b.Property<string>("SeatName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
-                    b.Property<string>("ResourceName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.HasKey("SeatId");
 
-                    b.HasKey("ResourceId");
-
-                    b.ToTable("Resources");
+                    b.ToTable("Seats");
                 });
 
             modelBuilder.Entity("AGData.BookMySeat.Domain.Entities.Visitor", b =>
                 {
                     b.Property<Guid>("VisitorId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasDefaultValueSql("NEWID()");
 
                     b.Property<string>("HostEmployee")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<Guid>("HostEmployeeId")
                         .HasColumnType("uniqueidentifier");
@@ -107,7 +115,33 @@ namespace AGData.BookMySeat.Infrastructure.Migrations
 
                     b.HasKey("VisitorId");
 
+                    b.HasIndex("HostEmployeeId");
+
                     b.ToTable("Visitors");
+                });
+
+            modelBuilder.Entity("AGData.BookMySeat.Domain.Entities.BookingRecord", b =>
+                {
+                    b.HasOne("AGData.BookMySeat.Domain.Entities.Employee", null)
+                        .WithMany()
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("AGData.BookMySeat.Domain.Entities.Seat", null)
+                        .WithMany()
+                        .HasForeignKey("SeatId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("AGData.BookMySeat.Domain.Entities.Visitor", b =>
+                {
+                    b.HasOne("AGData.BookMySeat.Domain.Entities.Employee", null)
+                        .WithMany()
+                        .HasForeignKey("HostEmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

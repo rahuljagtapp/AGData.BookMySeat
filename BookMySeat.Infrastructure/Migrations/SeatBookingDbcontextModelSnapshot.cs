@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AGData.BookMySeat.Infrastructure.Migrations
 {
-    [DbContext(typeof(SeatBookingDbcontext))]
-    partial class SeatBookingDbcontextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(SeatBookingDbContext))]
+    partial class SeatBookingDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -26,7 +26,8 @@ namespace AGData.BookMySeat.Infrastructure.Migrations
                 {
                     b.Property<Guid>("BookingId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasDefaultValueSql("NEWID()");
 
                     b.Property<DateTime>("BookingDate")
                         .HasColumnType("datetime2");
@@ -37,7 +38,7 @@ namespace AGData.BookMySeat.Infrastructure.Migrations
                     b.Property<DateTime>("EndDateTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("ResourceId")
+                    b.Property<Guid>("SeatId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("StartDateTime")
@@ -47,7 +48,7 @@ namespace AGData.BookMySeat.Infrastructure.Migrations
 
                     b.HasIndex("EmployeeId");
 
-                    b.HasIndex("ResourceId");
+                    b.HasIndex("SeatId");
 
                     b.ToTable("BookingRecords");
                 });
@@ -56,7 +57,8 @@ namespace AGData.BookMySeat.Infrastructure.Migrations
                 {
                     b.Property<Guid>("EmployeeId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasDefaultValueSql("NEWID()");
 
                     b.Property<string>("EmployeeName")
                         .IsRequired()
@@ -72,32 +74,29 @@ namespace AGData.BookMySeat.Infrastructure.Migrations
                     b.ToTable("Employees");
                 });
 
-            modelBuilder.Entity("AGData.BookMySeat.Domain.Entities.Resource", b =>
+            modelBuilder.Entity("AGData.BookMySeat.Domain.Entities.Seat", b =>
                 {
-                    b.Property<Guid>("ResourceId")
+                    b.Property<Guid>("SeatId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasDefaultValueSql("NEWID()");
 
-                    b.Property<string>("ResourceCategorey")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("ResourceName")
+                    b.Property<string>("SeatName")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.HasKey("ResourceId");
+                    b.HasKey("SeatId");
 
-                    b.ToTable("Resources");
+                    b.ToTable("Seats");
                 });
 
             modelBuilder.Entity("AGData.BookMySeat.Domain.Entities.Visitor", b =>
                 {
                     b.Property<Guid>("VisitorId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasDefaultValueSql("NEWID()");
 
                     b.Property<string>("HostEmployee")
                         .IsRequired()
@@ -126,9 +125,9 @@ namespace AGData.BookMySeat.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("AGData.BookMySeat.Domain.Entities.Resource", null)
+                    b.HasOne("AGData.BookMySeat.Domain.Entities.Seat", null)
                         .WithMany()
-                        .HasForeignKey("ResourceId")
+                        .HasForeignKey("SeatId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

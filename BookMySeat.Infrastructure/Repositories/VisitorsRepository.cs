@@ -2,14 +2,15 @@
 using AGData.BookMySeat.Application.Interfaces;
 using AGData.BookMySeat.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
+using AGData.BookMySeat.Infrastructure.Interfaces;
 
 namespace AGData.BookMySeat.Application.Services
 {
     public class VisitorRepository : IVisitorRepository
     {
-        private readonly SeatBookingDbcontext _dbContext;
+        private readonly ISeatBookingDbContext _dbContext;
 
-        public VisitorRepository(SeatBookingDbcontext dbContext)
+        public VisitorRepository(SeatBookingDbContext dbContext)
         {
             _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
         }
@@ -33,14 +34,15 @@ namespace AGData.BookMySeat.Application.Services
             if (existingVisitor == null)
                 throw new InvalidOperationException("Visitor not found.");
 
+
             if (!string.IsNullOrEmpty(updatedVisitorName))
-                existingVisitor.VisitorName = updatedVisitorName;
+                existingVisitor.UpdateVisitorName(updatedVisitorName);
 
-            if (!string.IsNullOrEmpty(updatedHostEmployee))
-                existingVisitor.HostEmployee = updatedHostEmployee;
+            if (!string.IsNullOrEmpty(updatedHostEmployee) && updatedHostEmployeeId.HasValue)
+                existingVisitor.UpdateHostEmployee(updatedHostEmployee, updatedHostEmployeeId.Value);
 
-            if (updatedHostEmployeeId.HasValue)
-                existingVisitor.HostEmployeeId = updatedHostEmployeeId.Value;
+            if (updatedHostEmployeeId.HasValue && string.IsNullOrEmpty(updatedHostEmployee))
+                existingVisitor.UpdateHostEmployeeId(updatedHostEmployeeId.Value);
 
             await _dbContext.SaveChangesAsync();
             return existingVisitor.VisitorId;

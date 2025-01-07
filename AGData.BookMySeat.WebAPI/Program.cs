@@ -34,6 +34,12 @@ namespace AGData.BookMySeat.WebAPI
             }
 
             app.UseHttpsRedirection();
+            app.UseCors(options =>
+            {
+                options.AllowAnyHeader();
+                options.AllowAnyMethod();
+                options.AllowAnyOrigin();
+            });
 
             app.UseAuthorization();
 

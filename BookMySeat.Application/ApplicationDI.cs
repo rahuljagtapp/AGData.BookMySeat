@@ -12,7 +12,7 @@ namespace AGData.BookMySeat.Application
         {
             services.AddScoped<IEmployeeService, EmployeeService>();
             services.AddScoped<IBookingService, BookingService>();
-            services.AddScoped<IResourceService, ResourceService>();
+            services.AddScoped<ISeatService, SeatService>();
             services.AddScoped<IVisitorService, VisitorService>();
             
             return services;

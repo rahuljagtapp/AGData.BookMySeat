@@ -2,7 +2,6 @@
 using AGData.BookMySeat.Domain.Entities;
 using AGData.BookMySeat.WebAPI.CustomActionFilter;
 using AGData.BookMySeat.WebAPI.DTOs;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AGData.BookMySeat.WebAPI.Controllers
@@ -27,12 +26,12 @@ namespace AGData.BookMySeat.WebAPI.Controllers
                 return BadRequest("Invalid booking data.");
 
             var newBooking = new BookingRecord
-            {
-                BookingId = Guid.NewGuid(),
-                ResourceId = newBookingDto.ResourceId,
-                StartDateTime = newBookingDto.StartDateTime,
-                EndDateTime = newBookingDto.EndDateTime
-            };
+              (
+                newBookingDto.EmployeeId,
+                newBookingDto.SeatId,
+                newBookingDto.StartDateTime,
+                newBookingDto.EndDateTime
+            );
 
             var addedBookingId = await _bookingService.AddBookingAsync(newBooking);
             return CreatedAtAction("GetBookingById", new { id = addedBookingId }, addedBookingId);
@@ -48,7 +47,8 @@ namespace AGData.BookMySeat.WebAPI.Controllers
             return Ok(new BookingDto
             {
                 BookingId = booking.BookingId,
-                ResourceId = booking.ResourceId,
+                EmployeeId = booking.EmployeeId,
+                SeatId = booking.SeatId,
                 StartDateTime = booking.StartDateTime,
                 EndDateTime = booking.EndDateTime
             });
@@ -87,7 +87,8 @@ namespace AGData.BookMySeat.WebAPI.Controllers
             var bookingDtos = bookings.Select(b => new BookingDto
             {
                 BookingId = b.BookingId,
-                ResourceId = b.ResourceId,
+                EmployeeId = b.EmployeeId,
+                SeatId = b.SeatId,
                 StartDateTime = b.StartDateTime,
                 EndDateTime = b.EndDateTime
             }).ToList();

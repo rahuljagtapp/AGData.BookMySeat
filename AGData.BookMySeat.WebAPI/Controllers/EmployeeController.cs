@@ -43,12 +43,8 @@ public class EmployeeController : ControllerBase
             return BadRequest("Invalid role provided.");
         }
 
-        var newEmployee = new Employee
-        {
-            EmployeeId = Guid.NewGuid(),
-            EmployeeName = newEmployeeDto.EmployeeName,
-            EmployeeRole = role
-        };
+        var newEmployee = new Employee(newEmployeeDto.EmployeeName, role);
+
 
         var addedEmployeeId = await _employeeService.AddEmployeeAsync(newEmployee);
         return CreatedAtAction("GetEmployeeByID", new { id = newEmployee.EmployeeId }, newEmployee.EmployeeId);
@@ -74,6 +70,8 @@ public class EmployeeController : ControllerBase
         return Ok(updatedEmployeeDtoResult);
     }
 
+
+   
     [HttpDelete("{id:Guid}")]
     public async Task<IActionResult> DeleteEmployeeAsync([FromRoute] Guid id)
     {

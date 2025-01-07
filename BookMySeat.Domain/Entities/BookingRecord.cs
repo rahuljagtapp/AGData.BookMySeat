@@ -4,30 +4,43 @@
     {
         public Guid BookingId { get; private set; }
         public Guid EmployeeId { get; private set; }
-        public Guid ResourceId { get; private set; }
+        public Guid SeatId { get; private set; }
         public DateTime BookingDate { get; private set; }
         public DateTime StartDateTime { get; private set; }
         public DateTime EndDateTime { get; private set; }
 
-        private BookingRecord() { }
+        public BookingRecord() { }
 
-        public BookingRecord(Guid employeeId, Guid resourceId, DateTime bookingDate, DateTime startDateTime, DateTime endDateTime)
+        public BookingRecord(Guid employeeId,Guid seatId,DateTime startDateTime, DateTime endDateTime)
         {
-            BookingId = Guid.NewGuid();
+
             EmployeeId = employeeId;
-            ResourceId = resourceId;
-            BookingDate = bookingDate;
+            SeatId = seatId;
+            BookingDate = DateTime.Now;
             StartDateTime = startDateTime;
             EndDateTime = endDateTime;
         }
 
-        public void UpdateBookingDates(DateTime newStartDateTime, DateTime newEndDateTime)
+        public void UpdateStartDate(DateTime newStartDateTime)
         {
-            if (newStartDateTime < newEndDateTime)
-            {
-                StartDateTime = newStartDateTime;
+            
+                StartDateTime = newStartDateTime;  
+            
+        }
+       public void UpdateBookingDates(DateTime newStartDateTime, DateTime newEndDateTime)
+        {
+            StartDateTime = newStartDateTime;
+            EndDateTime= newEndDateTime;
+        }
+
+        public void UpdateEndDate(DateTime newEndDateTime)
+        {
+           
                 EndDateTime = newEndDateTime;
-            }
+        }
+        public void UpdateSeat(Guid newSeatId)
+        {
+            SeatId = newSeatId;
         }
     }
 }

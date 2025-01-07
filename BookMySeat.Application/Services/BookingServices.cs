@@ -21,7 +21,7 @@ namespace AGData.BookMySeat.Application.Services
             return await _bookingRepository.AddBookingRecordAsync(booking);
         }
 
-        public async Task<Guid> UpdateBookingAsync(Guid bookingId, DateTime? updatedStartDateTime = null, DateTime? updatedEndDateTime = null, Guid? updatedResourceId = null)
+        public async Task<Guid> UpdateBookingAsync(Guid bookingId, DateTime? updatedStartDateTime = null, DateTime? updatedEndDateTime = null, Guid? updatedSeatId = null)
         {
             if (bookingId == Guid.Empty)
                 throw new ArgumentException("Booking ID cannot be empty.", nameof(bookingId));
@@ -42,14 +42,14 @@ namespace AGData.BookMySeat.Application.Services
             if (updatedEndDateTime.HasValue && updatedEndDateTime.Value < DateTime.Now)
                 throw new ArgumentException("End date cannot be in the past.");
 
-            if (updatedResourceId.HasValue)
+            if (updatedSeatId.HasValue)
             {
-                if (updatedResourceId.Value == Guid.Empty)
-                    throw new ArgumentException("Resource ID cannot be empty.", nameof(updatedResourceId));
+                if (updatedSeatId.Value == Guid.Empty)
+                    throw new ArgumentException("Resource ID cannot be empty.", nameof(updatedSeatId));
 
                 var isResourceAvailable = !(await _bookingRepository.GetAllBookingRecordsAsync())
                     .Any(b =>
-                        b.ResourceId == updatedResourceId.Value &&
+                        b.SeatId == updatedSeatId.Value && 
                         b.BookingId != bookingId &&
                         ((b.StartDateTime < (updatedEndDateTime ?? existingBooking.EndDateTime)) &&
                          (b.EndDateTime > (updatedStartDateTime ?? existingBooking.StartDateTime)))
@@ -58,13 +58,17 @@ namespace AGData.BookMySeat.Application.Services
                 if (!isResourceAvailable)
                     throw new InvalidOperationException("The resource is not available during the specified time.");
 
-                existingBooking.ResourceId = updatedResourceId.Value;
+                existingBooking.UpdateSeat(updatedSeatId.Value);
             }
 
-            existingBooking.StartDateTime = updatedStartDateTime ?? existingBooking.StartDateTime;
-            existingBooking.EndDateTime = updatedEndDateTime ?? existingBooking.EndDateTime;
+            DateTime tempStartDateTime= updatedStartDateTime ?? existingBooking.StartDateTime;
+            existingBooking.UpdateStartDate(tempStartDateTime);
 
-            return await _bookingRepository.UpdateBookingRecordAsync(bookingId, updatedStartDateTime, updatedEndDateTime, updatedResourceId);
+            DateTime tempEndDateTime = updatedEndDateTime ?? existingBooking.EndDateTime;
+
+            existingBooking.UpdateEndDate(tempEndDateTime);
+
+            return await _bookingRepository.UpdateBookingRecordAsync(bookingId, updatedStartDateTime, updatedEndDateTime, updatedSeatId);
         }
 
         public async Task<Guid> DeleteBookingAsync(Guid bookingId)

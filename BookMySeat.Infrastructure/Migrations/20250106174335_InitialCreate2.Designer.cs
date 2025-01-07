@@ -11,9 +11,9 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AGData.BookMySeat.Infrastructure.Migrations
 {
-    [DbContext(typeof(SeatBookingDbcontext))]
-    [Migration("20241210210051_dbinit12")]
-    partial class dbinit12
+    [DbContext(typeof(SeatBookingDbContext))]
+    [Migration("20250106174335_InitialCreate2")]
+    partial class InitialCreate2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -29,7 +29,8 @@ namespace AGData.BookMySeat.Infrastructure.Migrations
                 {
                     b.Property<Guid>("BookingId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasDefaultValueSql("NEWID()");
 
                     b.Property<DateTime>("BookingDate")
                         .HasColumnType("datetime2");
@@ -59,7 +60,8 @@ namespace AGData.BookMySeat.Infrastructure.Migrations
                 {
                     b.Property<Guid>("EmployeeId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasDefaultValueSql("NEWID()");
 
                     b.Property<string>("EmployeeName")
                         .IsRequired()
@@ -79,9 +81,10 @@ namespace AGData.BookMySeat.Infrastructure.Migrations
                 {
                     b.Property<Guid>("ResourceId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasDefaultValueSql("NEWID()");
 
-                    b.Property<string>("ResourceCategorey")
+                    b.Property<string>("ResourceCategory")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
@@ -100,7 +103,8 @@ namespace AGData.BookMySeat.Infrastructure.Migrations
                 {
                     b.Property<Guid>("VisitorId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasDefaultValueSql("NEWID()");
 
                     b.Property<string>("HostEmployee")
                         .IsRequired()

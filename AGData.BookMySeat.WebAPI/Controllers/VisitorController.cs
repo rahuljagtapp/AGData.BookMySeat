@@ -39,12 +39,12 @@ namespace AGData.BookMySeat.WebAPI.Controllers
         [ValidateModel]
         public async Task<IActionResult> AddVisitorAsync([FromBody] AddVisitorRequestDto newVisitorDto, [FromQuery] Employee currentUser)
         {
-            var newVisitor = new Visitor
-            {
-                VisitorId = Guid.NewGuid(),
-                VisitorName = newVisitorDto.VisitorName,
-                HostEmployee = newVisitorDto.HostEmployee
-            };
+            var newVisitor = new Visitor(
+
+                newVisitorDto.VisitorName,
+                newVisitorDto.HostEmployee,
+                newVisitorDto.HostEmployeeId
+           );
 
             var addedVisitorId = await _visitorService.AddVisitorAsync(newVisitor, currentUser);
             return CreatedAtAction("GetVisitorById", new { id = addedVisitorId }, addedVisitorId);

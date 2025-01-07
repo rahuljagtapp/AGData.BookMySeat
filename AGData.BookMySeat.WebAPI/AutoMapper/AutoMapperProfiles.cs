@@ -11,7 +11,7 @@ namespace AGData.BookMySeat.WebAPI.AutoMapper
             CreateMap<AddEmployeeRequestDto,Employee>().ReverseMap();
             CreateMap<AddBookingRequestDto,BookingRecord>().ReverseMap();
             CreateMap<AddVisitorRequestDto,Visitor>().ReverseMap();
-            CreateMap<AddResourceRequestDto,Resource>().ReverseMap();
+            CreateMap<AddSeatRequestDto,Seat>().ReverseMap();
         }
     }
 }

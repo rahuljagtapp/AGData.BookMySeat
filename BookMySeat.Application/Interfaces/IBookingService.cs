@@ -1,7 +1,4 @@
 ﻿using AGData.BookMySeat.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace AGData.BookMySeat.Application.Interfaces
 {

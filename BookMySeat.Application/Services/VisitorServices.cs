@@ -41,7 +41,7 @@ namespace AGData.BookMySeat.Application.Services
             return await _visitorRepository.AddVisitorAsync(newVisitor);
         }
 
-        public async Task<Guid> UpdateVisitorAsync(Employee currentUser, Guid visitorId, string? updatedVisitorName = null, string? updatedHostEmployee = null)
+        public async Task<Guid> UpdateVisitorAsync(Employee currentUser, Guid visitorId, string? updatedVisitorName = null, string? updatedHostEmployee = null,Guid? updatedHostEmployeeId = null)
         {
             CheckAdminRole(currentUser);
 
@@ -53,10 +53,13 @@ namespace AGData.BookMySeat.Application.Services
                 throw new InvalidOperationException("Visitor not found.");
 
             if (!string.IsNullOrEmpty(updatedVisitorName))
-                existingVisitor.VisitorName = updatedVisitorName;
+                existingVisitor.UpdateVisitorName(updatedVisitorName);
 
             if (!string.IsNullOrEmpty(updatedHostEmployee))
-                existingVisitor.HostEmployee = updatedHostEmployee;
+                existingVisitor.UpdateHostEmployee(updatedHostEmployee,updatedHostEmployeeId.Value);
+
+            if (updatedHostEmployeeId.HasValue && string.IsNullOrEmpty(updatedHostEmployee))
+                existingVisitor.UpdateHostEmployeeId(updatedHostEmployeeId.Value);
 
             return await _visitorRepository.UpdateVisitorAsync(visitorId, updatedVisitorName, updatedHostEmployee);
         }

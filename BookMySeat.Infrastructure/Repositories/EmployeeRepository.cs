@@ -3,14 +3,15 @@ using AGData.BookMySeat.Domain.Entities;
 using AGData.BookMySeat.Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using AGData.BookMySeat.Domain.Enums;
+using AGData.BookMySeat.Infrastructure.Interfaces;
 
 namespace AGData.BookMySeat.Infrastructure.Repositories
 {
     public class EmployeeRepository : IEmployeeRepository
     {
-        private readonly SeatBookingDbcontext dbContext;
+        private readonly ISeatBookingDbContext dbContext;
 
-        public EmployeeRepository(SeatBookingDbcontext dbContext)
+        public EmployeeRepository(SeatBookingDbContext dbContext)
         {
             this.dbContext = dbContext;
         }
@@ -35,7 +36,7 @@ namespace AGData.BookMySeat.Infrastructure.Repositories
         public async Task<Guid> AddEmployeeAsync(Employee entity)
         {
             // Create a new GUID for the employee if it's not provided
-            entity.EmployeeId = Guid.NewGuid();
+           
             dbContext.Employees.Add(entity);
 
             await dbContext.SaveChangesAsync();
@@ -52,10 +53,10 @@ namespace AGData.BookMySeat.Infrastructure.Repositories
             {
                 // Update properties only if they're not null
                 if (employeeName != null)
-                    employee.EmployeeName = employeeName;
+                    employee.UpdateEmployeeName(employeeName)   ;
 
                 if (employeeRole.HasValue)
-                    employee.EmployeeRole = employeeRole.Value;
+                    employee.UpdateEmployeeRole(employeeRole.Value);
 
                 await dbContext.SaveChangesAsync();
 
